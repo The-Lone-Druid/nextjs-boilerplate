@@ -7,6 +7,13 @@ describe('Button Component Integration', () => {
     cy.contains('View Documentation').should('be.visible');
 
     // Check that buttons have correct styling
-    cy.get('button').contains('Get Started').should('have.class', 'bg-primary');
+    cy.get('a').contains('Get Started').should('be.visible');
+    cy.get('a').contains('Get Started').should('have.class', 'bg-primary');
+
+    // Check that links open in new tab
+    cy.get('a').contains('Get Started').should('have.attr', 'target', '_blank');
+    cy.get('a')
+      .contains('View Documentation')
+      .should('have.attr', 'target', '_blank');
   });
 });
